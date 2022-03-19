@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe ResumeBuilder do
-	
+
   doc = Docx::Document.open('sample_resume.docx').text
-	
-	resume_classifier = ResumeClassifier.new(doc, "Sample Person", "fake_presume_object")
-	resume_classifier.classify
+
+  resume_classifier = ResumeClassifier.new(doc, "Sample Person", "fake_presume_object")
+  resume_classifier.classify
 
 	let(:resume_builder){ResumeBuilder.new(resume_classifier.classifide_lines)}
 
@@ -64,8 +64,26 @@ describe ResumeBuilder do
                     end
                 end
             end 
-        end            
-      
+        end
+    end
+
+    it 'sets classifide type to section for section headers matched by the definition regex' do
+      section_headers = [
+        'Career Overview', 'Work Experience', 'Employment', 'Education',
+        'Career Highlights', 'Professional Development'
+      ]
+
+      section_headers.each do |text|
+        classifier = ResumeClassifier.new(text, "Sample Person", "fake_presume_object")
+        classifier.classify
+        subject = described_class.new(classifier.classifide_lines)
+
+        subject.first_pass
+        subject.second_pass
+
+        expect(subject.classifides[0].type).to eq('section')
+        expect(subject.classifides[0].section).to eq(text)
+      end
     end
 
     it "should build header" do
@@ -93,7 +111,6 @@ describe ResumeBuilder do
               check_headers_length = headers.length
             end
 
-            
             unless @classifide.type?
                 unless @classifide.type == "name" or @classifide.type == "email" or @classifide.type == "phone" or @classifide.type == "address"
                     if @classifide.type == "header"

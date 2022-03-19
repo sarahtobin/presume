@@ -51,7 +51,7 @@
   end
 
   def regex_section
-    @regex_section ||= Regexp.new("([a-z]* ){0,5}(highlight|professional development|summary|experience|skills|education|qualifications|interests|profile)( [a-z]*){0,5}", "i")
+    @regex_section ||= Regexp.new("([a-z]* ){0,5}(career overview|education|employment|experience|highlight(s?)|professional development|summary|skills|qualifications|interests|profile)( [a-z]*){0,5}", "i")
   end
 
   def regex_new_lines_and_blanks
