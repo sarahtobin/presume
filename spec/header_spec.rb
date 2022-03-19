@@ -37,7 +37,7 @@ describe Header do
 		header.instance_variable_set("@dates", 'September 2014 to present')
 		puts header.dates
 		expect(header.start_time_text?).to eq("September 2014")
-		expect(header.end_time_number).to eq(2015 + (6/12).to_f)
+		expect(header.end_time_number).to eq(Time.now.utc.year + (6/12).to_i)
 	end
 
 	it "checks if end time text is current job" do

@@ -16,7 +16,7 @@ require "classes/searchables.rb"
 class Presume
 
   attr_accessor :sections, :headers, :bullets, :all_types, :classifides
-  
+
   def initialize(doc, name)
     @resume_classifier = ResumeClassifier.new(doc, name, self)
     @resume_classifier.classify

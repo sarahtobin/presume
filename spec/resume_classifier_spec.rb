@@ -119,6 +119,28 @@ describe ResumeClassifier do
 	  	end
   	end
 
+ describe '#classify' do
+   context 'for profession lines' do
+     it 'classifies professions that match the regex' do
+       matching_profession_lines = [
+         'Project Coordinator',
+         'Junior Analyst',
+         'Volunteer Coordinator',
+         'Network Architect',
+         'Data Governance Consultant',
+       ]
+
+       matching_profession_lines.each do |resume_text|
+         subject = described_class.new(resume_text, "Sample Person", "fake_presume_object")
+
+         subject.classify
+
+         expect(subject.instance_variable_get(:@professions)).to eq(resume_text)
+       end
+     end
+   end
+ end
+
 =begin  		
 
 	it "classifies lines by resume components" do
