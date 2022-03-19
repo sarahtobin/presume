@@ -3,8 +3,8 @@
   end
 
   def regex_professions
-    @regex_professions ||= Regexp.new('([A-Z][a-z]* ){0,5}(coordinator|architect|assistant|asst|manager|director|technician|analyst|associate|developer|programmer|nurse|consultant|worker|clerk|receptionist|secretary|teacher|engineer|administrator|researcher|head of|admin|intern|database|leader|server|waitress|waiter|busboy)\b(\.|)( [A-Z][a-z]*){0,5}', 'i')
-  end 
+    @regex_professions ||= Regexp.new('([A-Z][a-z]* ){0,5}(admin|administrator|analyst|architect|assistant|associate|asst|busboy|clerk|consultant|contractor|coordinator|database|dba|developer|director|engineer|executive|head of|intern|leader|manager|nurse|president|programmer|receptionist|representative|researcher|secretary|server|service|technician|teacher|vp|waiter|waitress|worker)\b(\.|)(,? [A-Z][a-z]*){0,5}', 'i')
+  end
 
   def regex_schools
     @regex_schools ||= Regexp.new("([a-z]{1,} ){0,5}(university|college)\\b(( [a-z]{1,}){0,5}|)", "i")
