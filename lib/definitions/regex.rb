@@ -3,7 +3,7 @@
   end
 
   def regex_professions
-    @regex_professions ||= Regexp.new('([A-Z][a-z]* ){0,5}(admin|administrator|analyst|architect|assistant|associate|asst|busboy|clerk|consultant|contractor|coordinator|database|dba|developer|director|engineer|executive|head of|intern|leader|manager|nurse|president|programmer|receptionist|representative|researcher|secretary|server|service|technician|teacher|vp|waiter|waitress|worker)\b(\.|)(,? [A-Z][a-z]*){0,5}', 'i')
+    @regex_professions ||= Regexp.new('([A-Z][a-z]* ){0,5}(admin|administrator|analyst|architect|assistant|associate|asst|busboy|clerk|consultant|contractor|coordinator|database|dba|developer|director|engineer|executive|head of|intern|leader|manager|nurse|president|programmer|receptionist|representative|researcher|sales|secretary|server|service|technician|teacher|vp|waiter|waitress|worker|accountant)\b(\.|)(,? [A-Z][a-z]*){0,5}', 'i')
   end
 
   def regex_schools
@@ -19,7 +19,7 @@
   end
 
   def regex_phone
-    @regex_phone ||= Regexp.new("\\d\\d\\d(|\\))(| |-)(\\(|)\\d\\d\\d(|\\))(| |-)\\d\\d\\d\\d", "i")    
+    @regex_phone ||= Regexp.new("\\d\\d\\d(|\\)|\.)(| |-|\.)(\\(|)\\d\\d\\d(|\\))(| |-|\.)\\d\\d\\d\\d", "i")
   end
 
   def regex_email

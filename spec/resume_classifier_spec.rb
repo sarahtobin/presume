@@ -141,6 +141,7 @@ describe ResumeClassifier do
           'Contract Executive Recruiter',
           'Account Executive',
           'Independent Contractor',
+          'Technical Sales Specialist'
         ]
 
         matching_profession_lines.each do |resume_text|
@@ -149,6 +150,24 @@ describe ResumeClassifier do
           subject.classify
 
           expect(subject.instance_variable_get(:@professions)).to eq(resume_text)
+        end
+      end
+    end
+
+    context 'for phone number lines' do
+      it 'classifies phone numbers that match the regex' do
+        matching_phone_lines = [
+          '555-555-5555',
+          '555 555 5555',
+          '555.555.5555'
+        ]
+
+        matching_phone_lines.each do |resume_text|
+          subject = described_class.new(resume_text, "Sample Person", "fake_presume_object")
+
+          subject.classify
+
+          expect(subject.instance_variable_get(:@phone)).to eq(resume_text)
         end
       end
     end
